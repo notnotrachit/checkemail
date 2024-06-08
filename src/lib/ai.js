@@ -5,7 +5,7 @@ import OpenAI from "openai";
 
 
 const categorySchema = z.object({
-    category: z.enum(["Important", "Promotional", "Marketting", "Spam"]).describe("The category of the email"),
+    category: z.enum(["Important", "Promotional", "Marketting", "Spam", "General"]).describe("The category of the email"),
 });
 
 async function getClassification(message, oaiKey) {
@@ -19,7 +19,7 @@ async function getClassification(message, oaiKey) {
     messages: [
       {
         role: "user",
-        content: message,
+        content: "Categories the following email into the following categories: Important, Promotional, Marketting, Spam, General.  Important: Emails that are personal or work-related and require immediate attention. Promotions: Emails related to sales, discounts, and marketing campaigns. Social: Emails from social networks, friends, and family. Marketing: Emails related to marketing, newsletters, and notifications. Spam: Unwanted or unsolicited emails. General: If none of the above are matched, use General as the category.  Email: \n " + message ,
       },
     ],
     model: "gpt-4o",

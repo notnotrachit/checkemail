@@ -180,18 +180,69 @@ export default function EmailCard(props: { oemail: any }) {
                       {email.classification}
                     </div>
                   )}
+                  {email.classification === "Social" && (
+                    <div className={"px-4 py-1 rounded-md bg-info"}>
+                      {email.classification}
+                    </div>
+                  )}
+                  {email.classification === "Marketting" && (
+                    <div className={"px-4 py-1 rounded-md bg-purple-500"}>
+                      {email.classification}
+                    </div>
+                  )}
+                  {email.classification === "General" && (
+                    <div className={"px-4 py-1 rounded-md bg-gray-500"}>
+                      {email.classification}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
           ))}
-        <div className="hidden fixed top-0 left-0 w-screen h-screen bg-black/20 backdrop-blur-sm" id="email_backdrop" onClick={close_email}></div>
-        <div className="top-0 right-0 h-screen w-[36rem] bg-gray-800 fixed z-10 translate-x-full transition-all ease-in-out" id="email_sidebar">
+        <div
+          className="hidden fixed top-0 left-0 w-screen h-screen bg-black/20 backdrop-blur-sm"
+          id="email_backdrop"
+          onClick={close_email}
+        ></div>
+        <div
+          className="top-0 right-0 h-screen w-[36rem] bg-gray-800 fixed z-10 translate-x-full transition-all ease-in-out"
+          id="email_sidebar"
+        >
           <div className="py-16 px-6">
             <div className="flex justify-between items-center">
               <div>{from_oemail}</div>
-              <div className="px-4 py-1 rounded-md bg-success">Important</div>
+              {catergory_oemail === "Important" && (
+                <div className={"px-4 py-1 rounded-md bg-success"}>
+                  {catergory_oemail}
+                </div>
+              )}
+              {catergory_oemail === "Promotional" && (
+                <div className={"px-4 py-1 rounded-md bg-warning"}>
+                  {catergory_oemail}
+                </div>
+              )}
+              {catergory_oemail === "Spam" && (
+                <div className={"px-4 py-1 rounded-md bg-error"}>
+                  {catergory_oemail}
+                </div>
+              )}
+              {catergory_oemail === "Social" && (
+                <div className={"px-4 py-1 rounded-md bg-info"}>
+                  {catergory_oemail}
+                </div>
+              )}
+              {catergory_oemail === "Marketting" && (
+                <div className={"px-4 py-1 rounded-md bg-purple-500"}>
+                  {catergory_oemail}
+                </div>
+              )}
+              {catergory_oemail === "General" && (
+                <div className={"px-4 py-1 rounded-md bg-gray-500"}>
+                  {catergory_oemail}
+                </div>
+              )}
             </div>
-            <div className="mt-16 overflow-y-auto " >
+            <div className="mt-16 overflow-y-auto ">
               <iframe
                 srcDoc={body_oemail}
                 className="w-full h-[80vh] border-none rounded-md"
